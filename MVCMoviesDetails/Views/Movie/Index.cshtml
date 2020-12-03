@@ -1,0 +1,46 @@
+﻿
+<section id="MoviePartial">
+    <partial name="~/Views/Movie/_MovieDataPartial.cshtml">
+    @*<partial name="~/Views/Movie/_IndexView.cshtml">*@
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+<div>
+    <label for="Search">Search a movie by its id: <input type="text" id="textMovieId" width="150px" height="50px" /></label>
+
+    <br />
+    <input type="button" value="Search" id="SearchId" />
+</div>
+<div id="mydiv">
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('#SearchId').on('click', function () {
+        $.ajax(
+            {
+
+                url: '/Movie/SearchById',
+                type: 'POST',
+                data:
+                {
+                    id: parseInt($('#textMovieId').val())
+                },
+                success: function (response) {
+                    $("#MoviePartial").hide();
+                    $("#mydiv").html(response);
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+
+    });
+
+</script>

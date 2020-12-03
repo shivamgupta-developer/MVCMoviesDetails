@@ -1,0 +1,90 @@
+﻿
+@using MVCMoviesDetails.Models.Movies;
+@model MovieModel
+
+
+<h1>UpdateView</h1>
+
+
+<form method="post" id="updateForm">
+
+  
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <label>MovieId</label>
+            <div class="col-md-6">
+                <input type="text" name="MovieId" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <label>MovieName</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="MovieName" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <label>Release Year</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="ReleaseYear" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <label>Genre</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="Genre" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="button" value="Update" id="btnjQueryPost" />
+        </div>
+
+    </div>
+</form>
+
+<div id="Update"></div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('#btnjQueryPost').on('click', function () {
+        $.ajax(
+            {
+                url: '/Movie/UpdateView',
+                type: 'POST',
+                data: $("#updateForm").serialize(),
+                
+                //{
+                //    $("#updateForm").serialize(),
+                //    UpdateId: parseInt($('#updatemovieId').val())
+
+                    
+
+                  
+                ////Id: parseInt($('#MovieId').val()),
+                ////Name: $('#MovieName').val(),
+                ////releaseYear: $('#MovieYear').val(),
+                ////movieGenre: $('#MovieGenre').val()
+                   
+                //},
+                success: function (response) {
+                    console.log(response);
+                    $("#Update").html(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    });
+</script>

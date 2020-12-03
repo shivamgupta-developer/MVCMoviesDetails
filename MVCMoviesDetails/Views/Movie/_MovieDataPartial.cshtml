@@ -1,0 +1,16 @@
+﻿
+@model List<MVCMoviesDetails.Models.Movies.MovieModel>
+@*<div id="MoviePartial"></div>*@
+<h2>Movie Details</h2>
+
+<table width="100%" , border="2">
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td class="MovieId" width="10%">@movie.MovieId</td>
+            <td class="MovieName" width="80%">@movie.MovieName</td>
+            <td class="ReleaseYear" width="30%">@movie.ReleaseYear</td>
+            <td class="Genre" width="60%">@movie.Genre</td>
+        </tr>
+    }
+</table>

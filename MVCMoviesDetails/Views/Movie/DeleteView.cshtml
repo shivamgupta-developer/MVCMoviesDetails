@@ -1,0 +1,51 @@
+﻿@using MVCMoviesDetails.Models.Movies;
+@model MovieModel
+
+@{
+    ViewData["Title"] = "DeleteView";
+}
+
+<h1>DeleteView</h1>
+
+<div class="form-group">
+    <div class="col-md-6">
+        <label>MovieId</label>
+        <div class="col-md-6">
+            <input type="text" name="MovieId" id="movieId" />
+        </div>
+    </div>
+
+</div>
+
+<div class="form-group">
+    <div class="col-md-6">
+        <input type="button" value="Delete" id="btnjQueryPost" />
+    </div>
+
+</div>
+
+
+<div id="Delete"></div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('#btnjQueryPost').on('click', function () {
+        $.ajax(
+            {
+                url: '/Movie/DeleteView',
+                type: 'POST',
+                data:
+                {
+                 
+                Id: parseInt($('#movieId').val())
+               
+                },
+                success: function (response) {
+                    console.log(response);
+                    $("#Delete").html(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    });
+</script>
